@@ -24,4 +24,14 @@ public class EmployeeController {
     List<Employee> getEmployees(Model model) {
         return employeeRepository.getAllEmployees();
     }
+
+    @GetMapping("/employeesById/{id}")
+    ResponseEntity getEmployeeById(@PathVariable("id") int id) {
+        return new ResponseEntity<>(employeeRepository.getEmployeeById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/employeesByName/{name}")
+    ResponseEntity getEmployeeByName(@PathVariable("name") String name) {
+        return new ResponseEntity<>(employeeRepository.getEmployeeByName(name), HttpStatus.OK);
+    }
 }
